@@ -1,0 +1,46 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grid {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 1px;
+}
+
+.square {
+  border: 1px solid rgb(124, 126, 124);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sqX {
+  color: rgb(255, 81, 0);
+  transform: rotate(45deg);
+  font-size: 34px;
+}
+
+.sqO {
+  color: rgb(0, 132, 255);
+  font-size: 20px;
+}
+
+.restart {
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100px;
+}
