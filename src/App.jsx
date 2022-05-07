@@ -1,6 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import { initGrid, getWinningCombinations, generateMove } from "./gameLogic";
+import {
+  initGrid,
+  getWinningCombinations,
+  generateMove,
+  updateGrid,
+} from "./gameLogic";
 import { useEffect } from "react";
 function App() {
   const [grid, setGrid] = useState([]);
@@ -19,6 +24,7 @@ function App() {
 
   const handleClick = (sq) => {
     const { x, y } = sq;
+    let isWin = false;
 
     let winningCombinations = [];
     const playerDots = grid.filter((dot) => dot.value === 0);
@@ -30,16 +36,12 @@ function App() {
       winningCombinations.some((dot) => dot.x === x && dot.y === y)
     ) {
       setWin("player");
+      isWin = true;
     }
 
-    const gridAfterPlayersMove = grid.map((dot) => {
-      if (dot.x === x && dot.y === y) {
-        dot.value = 0;
-      }
-      return dot;
-    });
+    const gridAfterPlayersMove = updateGrid(grid, sq, 0);
 
-    if (sq.value != null && !win) {
+    if (sq.value != null && !isWin) {
       const { winner, updatedGrid } = generateMove(gridAfterPlayersMove);
 
       if (winner === "pc") {

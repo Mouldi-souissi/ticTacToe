@@ -119,6 +119,7 @@ export const updateGrid = (grid, newDot, value) => {
     return dot;
   });
 };
+
 export const generateMove = (grid) => {
   const pcDots = grid.filter((dot) => dot.value === 1);
   const playerDots = grid.filter((dot) => dot.value === 0);
